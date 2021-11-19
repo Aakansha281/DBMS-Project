@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="public\css\style.css"/>
+
+    <title>Resume Generator</title>
+</head>
+<body id='cvform'>
+<script >function addNewWeField(){
+    console.log('Adding new Field');
+    let newNode = document.createElement("textarea");
+    newNode.classList.add("form-control");
+    newNode.classList.add("weField");
+    newNode.classList.add("mt-2");
+    newNode.setAttribute("rows",2);
+    newNode.setAttribute('placeholder','Enter here');
+    newNode.setAttribute('name','w');
+    let weAddButton = document.getElementById("weAddButton");
+    let we= document.getElementById("we");
+    we.insertBefore(newNode,weAddButton);
+
+}
+function addNeweqField(){
+    console.log('Adding new Field');
+    let newNode = document.createElement("textarea");
+    newNode.classList.add("form-control");
+    newNode.classList.add("eqField");
+    newNode.classList.add("mt-2");
+    newNode.setAttribute("rows",2);
+    newNode.setAttribute('placeholder','Enter here');
+    newNode.setAttribute('name','e');
+    let weAddButton = document.getElementById("eqAddButton");
+    let we= document.getElementById("eq");
+    we.insertBefore(newNode,aqAddButton);
+
+}
+function addNewContactField (){
+    console.log('Adding new Field');
+    let newNode = document.createElement("input");
+    newNode.classList.add("form-control");
+    newNode.classList.add("contactField");
+    newNode.classList.add("mt-2");
+    newNode.setAttribute("rows",2);
+    newNode.setAttribute('placeholder','Enter here');
+    newNode.setAttribute('name','contactNumber');
+    let addNewContactButton = document.getElementById("contactAddButton");
+    let we= document.getElementById("contactNumber");
+    we.insertBefore(newNode,addNewContactButton);
+
+}
+function generateCV(){
+    console.log("generating cv");
+    let nf = document.getElementById('nameF').value;
+    let name1 = document.getElementById('name1');
+    name1.innerHTML=nf;
+    document.getElementById('name2').innerHTML = nf;
+    //document.getElementById('contactT').innerHTML = document.getElementById("contactField").value;
+    document.getElementById("addressT").innerHTML = document.getElementById("addressField").value;
+    document.getElementById("fbT").innerHTML = document.getElementById("fbField").value;
+    document.getElementById("instaT").innerHTML = document.getElementById("instaField").value;
+    document.getElementById("linkedinT").innerHTML = document.getElementById("linkedinField").value;
+    document.getElementById("objT").innerHTML = document.getElementById("o").value;
+    document.getElementById("accNameT").innerHTML = document.getElementById("accName").value;
+    document.getElementById("accDescT").innerHTML = document.getElementById("accDesc").value;
+    let we=document.getElementsByClassName("weField");
+    let str="";
+    for(let e of we)
+    {
+        str=str+`<li>${e.value}</li>`;
+    }
+    document.getElementById("weT").innerHTML=str;
+    
+   /*let ee=document.getElementsByClassName("eqField");
+    let str1="";
+    for(let e of ee)
+    {
+        str1=str1+`<li>${e.value}</li>`;
+    }
+document.getElementById("eqT").innerHTML=str1;*/
+    
+    document.getElementById("institutionNameT").innerHTML=document.getElementById("institutionName").value
+    
+    document.getElementById("gpaT").innerHTML=document.getElementById("gpa").value
+     
+     document.getElementById("courseNameT").innerHTML=document.getElementById('courseName').value;
+     document.getElementById("courseLocationT").innerHTML=document.getElementById('courseLocation').value;
+     document.getElementById("skillT").innerHTML=document.getElementById("skillName").value
+     document.getElementById("certNameT").innerHTML=document.getElementById("certName").value
+     document.getElementById("certDescT").innerHTML=document.getElementById("certDesc").value
+     document.getElementById("jobNameT").innerHTML=document.getElementById("jobName").value
+     document.getElementById("jobDescT").innerHTML=document.getElementById("jobDesc").value
+     document.getElementById("companyT").innerHTML=document.getElementById("company").value
+     document.getElementById("jobLocationT").innerHTML=document.getElementById("jobLocation").value
+     document.getElementById("recommendationLinkT").innerHTML=document.getElementById("recommendationLink").value
+     document.getElementById("rnameT").innerHTML=document.getElementById("rname").value
+     document.getElementById("rdesignationT").innerHTML=document.getElementById("rdesignation").value
+     document.getElementById("pLinkT").innerHTML=document.getElementById("pLink").value
+     document.getElementById("pnameT").innerHTML=document.getElementById("pname").value
+     document.getElementById("pDescriptionT").innerHTML=document.getElementById("pDescription").value
+      document.getElementById("projectDT").innerHTML=document.getElementById("projectD").value
+     document.getElementById("projectNameT").innerHTML=document.getElementById("projectName").value
+    
+
+     /*let ss=document.getElementById("skillName")
+     let str3=""
+     for(let e of ss){
+       str3=str3+`<li>${e.value},</li>`;
+
+     }
+     document.getElementById("skillT").innerHTML=str3*/
+    
+   let cc=document.getElementsByClassName("contactField");
+   console.log(cc)
+    let str2="";
+    for(let e of cc)
+    {
+        str2=str2+`<p>${e.value},</p>`;
+    }
+    document.getElementById("contactT").innerHTML=str2;
+    
+    
+
+
+
+}
+function printCV(){
+    window.print();
+}</script>
+
+<div class="row" style="margin-left:60px">
+<div class='container'>
+<h1 class='text-center my-2'> Resume Generator </h1>
+</div>
+<form  class="row" action="/home" method="POST" >
+<div class="col-lg-6">
+<h3>Personal Information</h3>
+<div class="form-group">
+    <label for="nameF">Your Name</label>
+    <input type="text" class="form-control" id="nameF" placeholder="Enter your name" name="n">
+    
+  </div>
+ 
+  <div class="form-group">
+    <label for="addressField">Your Email</label>
+    <textarea type="text" name="email" class="form-control" id="addressField" placeholder="Enter your address" rows="5s"></textarea>
+    
+  </div>
+  <div class='form-group mt-2' id='contactNumber'>
+<label for="">Contact Number</label>
+<input type="text" value="" class="form-control contactNumber contactField"  id ="contactField" name="contactNumber" placeholder="Enter here" ></input>
+<div class='container text-center mt-2' id='contactAddButton'>
+<button class='btn btn-primary btn-sm' onclick="addNewContactField()">Add</button>
+</div>
+</div>
+  <p class='text-secondary my-3'>Important Links</p>
+  <div class="form-group mt-2">
+    <label for="fbField">Facebook</label>
+    <input type="text" name="fb" class="form-control" id="fbField" placeholder="Enter here">
+    
+  </div>
+  <div class="form-group mt-2">
+    <label for="instaField">Others</label>
+    <input type="text" class="form-control" name="others" id="instaField" placeholder="Enter here">
+    
+  </div>
+   <div class="form-group mt-2">
+    <la bel for="instaField">Github</label>
+    <input type="text" class="form-control"name="git" id="instaField" placeholder="Enter here">
+    
+  </div>
+   <div class="form-group mt-2">
+    <label for="linkedinField">Linkedin</label>
+    <input type="text" class="form-control" name="linkedin" id="linkedinField" placeholder="Enter  here">
+    
+  </div>
+  <label class='text-secondary my-3'>Skills</label>
+<div class='form-group mt-2'>
+  <label for="" >Skill Name</label>
+  <input class="form-control" type="text" name="skillName" id="skillName"></input>
+</div>
+<div class='form-group mt-2'>
+  <label for="">Level of Expertise</label>
+  <input class="form-control" type="text" name="levelOfExpertise" id="levelOfExpertise"></input>
+</div>
+<div class="form-group"> 
+  <p class='text-secondary my-3'>Accomplishments</p>
+  <div class="form-group mt-2">
+    <label >Accomplishment Name</label>
+    <input type="text" class="form-control" id="accName" name="accName" placeholder="Enter here">
+    <label >Acc Description</label>
+    <input type="text" class="form-control" id="accDesc" name="accDesc" placeholder="Enter here">
+    
+  </div>
+</div>
+<div class="form-group"> 
+  <p class='text-secondary my-3'>Recommendations</p>
+  <div class="form-group mt-2">
+    <label > Recommendation Link</label>
+    <input type="text" class="form-control" id="recommendationLink" name="recommendationLink" placeholder="Enter here">
+    <label > Name of Recommender</label>
+    <input type="text" class="form-control" id="rname" name="rname" placeholder="Enter here">
+    <label >Designation of Recommender</label>
+    <input type="text" class="form-control" id="rdesignation" name="rdesignation" placeholder="Enter here">
+    
+  </div>
+</div>
+</div>
+<div class="col-lg-6">
+<h3>Professional Information </h3>
+<div class='form-group mt-2'>
+<label for="">Objective</label>
+<textarea type="text" class="form-control" id="o" placeholder="Enter here" rows="2"></textarea>
+
+</div>
+<div class='form-group mt-2 ' id='we'>
+<label for="">Work Experience</label>
+<textarea type="text" class="form-control weField "   placeholder="Enter here" rows="2"></textarea>
+<div class='container text-center mt-3' id='weAddButton' onclick="addNewWeField()">
+<button class='btn btn-primary btn-sm'>Add</button>
+</div>
+<!--<div class='form-group mt-2' id='eq'>
+<label for="">Academic Qualifications</label>
+<textarea type="text" class="form-control eqField"  placeholder="Enter here" rows="2"></textarea>
+<div class='container text-center mt-2' id='aqAddButton'>
+<button class='btn btn-primary btn-sm' onclick='addNeweqField()'>Add</button>
+</div>
+</div>-->
+<label style="padding:10px">Academic Qualification</label>
+
+<div class="form-group">
+  <div>
+  <label>Institution Name</label>
+
+  <input id="institutionName" name="educationId" class="form-control" type="text" placeholder="Enter here"></input>
+</div>
+  <label>Course Name</label>
+
+  <input id="courseName" name="courseName" class="form-control" type="text" placeholder="Enter here"></input>
+</div>
+<div>
+  <label>Course Location</label>
+
+  <input id="courseLocation" name="courseLocation" class="form-control" type="text" placeholder="Enter here"></input>
+</div>
+<div>
+  <label>GPA</label>
+
+  <input id="gpa" name="gpa" class="form-control" type="text" placeholder="Enter here"></input>
+</div>
+<div>
+  <label>Year of study</label>
+
+ <input class='form-control'></input>
+</div>
+
+<div class="form-group">
+<label for="" style="padding:10px;">Project Work</label>
+<div >
+  <label for="" name="projectName">Project Name</label>
+  <input type="text" class="form-control" id="projectName" name="projectName"></input>
+  <label >Project Description</label>
+  <input type="text" class="form-control" id="projectD" name="projectDescription"></input>
+  <label for="" name="workDate">Work date</label>
+  <input type="date" class='form-control'></input>
+
+
+</div>
+</div>
+</div>
+<div class="form-group"> 
+  <p class='text-secondary my-3'>Certifications</p>
+  <div class="form-group mt-2">
+    <label for="fbField">Certficate Name</label>
+    <input type="text" class="form-control" id="certName" name="certName" placeholder="Enter here">
+    <label >Certficate Description</label>
+    <input type="text" class="form-control" id="certDesc" name="certDesc" placeholder="Enter here">
+    
+  </div>
+</div>
+<div class="form-group"> 
+  <p class='text-secondary my-3'>Job Details</p>
+  <div class="form-group mt-2">
+    <label >Job Title</label>
+    <input type="text" class="form-control" id="jobName" name="jobName" placeholder="Enter here">
+    <label >Job Description</label>
+    <input type="text" class="form-control" id="jobDesc" name="jobDesc" placeholder="Enter here">
+     <label >Job Location</label>
+    <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter here">
+     <label >Company</label>
+    <input type="text" class="form-control" id="company" name="company" placeholder="Enter here">
+     
+  </div>
+</div>
+<div class="form-group"> 
+  <p class='text-secondary my-3'>Publications</p>
+  <div class="form-group mt-2">
+    <label > Publication Link</label>
+    <input type="text" class="form-control" id="pLink" name="pLink" placeholder="Enter here">
+    <label >Publication Name</label>
+    <input type="text" class="form-control" id="pname" name="pname" placeholder="Enter here">
+    <label >Publication description</label>
+    <input type="text" class="form-control" id="pDescription" name="pDescription" placeholder="Enter here">
+    
+  </div>
+</div>
+</div>
+
+ <div class='container text-center mt-3' >
+ <button class='btn btn-primary btn-lg' onclick="generateCV()">Generate CV</button>
+ </div>  
+</body>
+
+</form>
+<div class='container' id='cvTemplate'>
+
+<div class='row'>
+
+<div class='col-md-4 text-center' style="background-color:aquamarine" >
+<div class='container'>
+<p id="name1"> Aakansha Singh</p>
+<div>
+  <ul id="contactT">
+    <li>9532997549</li>
+    <li>7932554968</li>
+  </ul>
+</div>
+<p id="addressT">1st D Main Road , Girinagar </p>
+<hr/>
+<p>
+<a id="linkedinT" href='#'>Linkedin Link</a>
+</p>
+<p>
+<a id="instaT" href='#'>Instagram Link</a>
+</p>
+<p>
+<a id="fbT" href='#'>Facebook Link</a>
+</p>
+</div>
+<h6>Skills</h6>
+<ul id="skillT"><li>Skill 1</li>
+<li>Skill 2</li></ul>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3>Recommendations</h3>
+
+</div>
+<div class="card-body">
+  
+
+<p id="recommendationLinkT"><a id="recommendationLinkT" >Recommendation Link 1</a></p>
+<p id="rnameT"> Name of Recommender</p>
+<p id="rdesignationT"> Designation of Recommender</p>
+
+
+</div>
+</div>
+</div>
+<div class="col-md-8 py-5">
+<h1 class='text-center' id="name2" style='font-weight: 980'>Aakansha Singh</h1>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3 >Objective</h3>
+</div>
+<div class="card-body">
+<p id="objT">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel obcaecati perferendis recusandae dignissimos nulla, veritatis sapiente odio aliquam deserunt nisi, placeat excepturi suscipit corrupti unde, mollitia maxime ipsam numquam consequatur blanditiis laborum. Possimus esse, quam assumenda repudiandae ab asperiores reprehenderit culpa placeat aut quis? Similique ipsum fugit porro alias sequi.</p>
+</div>
+</div>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3>Work Experience</h3>
+
+</div>
+<div class="card-body">
+<ul id="weT">
+<li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
+</ul>
+</div>
+</div>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3>Academic Qualification</h3>
+
+</div>
+<div class="card-body">
+  <h3 id="institutionNameT">Institution Name</h3>
+
+<p id="courseNameT">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+<p id="courseLocationT">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+<p id="gpaT">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+
+</div>
+</div>
+<div class="card mt-4">
+<div class="card-body">
+  <div class="card-header" style="background-color:aquamarine">
+  <h3>Project Work</h3></div>
+  <p id="projectNameT" name="projectNameT">onsectetur adipisicing elit</p>
+<p id="projectDT" name="projectDescriptionT">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+<p id="workDateT" name="workDateT">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+
+</div>
+</div>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3>Certification Name</h3>
+
+</div>
+<div class="card-body">
+  
+
+<p id="certNameT">Certificate Name</p>
+<p id="certDescT">Certificate Description</p>
+
+</div>
+</div>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3>Award Name</h3>
+
+</div>
+<div class="card-body">
+  
+
+<p id="accNameT">Name</p>
+<p id="accDescT"> Description</p>
+
+</div>
+</div>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3>Job Details</h3>
+
+</div>
+<div class="card-body">
+  
+
+<p id="jobNameT">Job Title</p>
+<p id="jobDescT"> Job Description</p>
+<p id="companyT"> Company</p>
+<p id="jobLocationT">Location</p>
+
+</div>
+</div>
+<div class="card mt-4">
+<div class="card-header" style="background-color:aquamarine">
+<h3>Publication Details</h3>
+
+</div>
+<div class="card-body">
+  
+
+<p id="pnameT">Job Title</p>
+<p id="pDescriptionT"> Job Description</p>
+<p id="pLinkT"> Company</p>
+
+
+</div>
+</div>
+<div class='container mt-3 text-center'>
+<button class="btn " style="background-color:aquamarine" onclick="printCV()">
+Print cv
+</button>
+</div>
+
+<div class='col-md-8'>
+</div>
+</div>
+
+
+</div>
+
+</div>
+</html>

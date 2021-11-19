@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+th:nth-child(even),td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}</style>>
+
+<body>
+    <h2 style="margin-left: 560px; ">Query Results</h2>
+    <table>
+        
+        </table>
+        <table style="margin-left: 180px; border:1px solid aquamarine">
+            <th  >
+            member_id
+        </th>
+         <th >
+            Name
+        </th>
+         <th >
+            City
+        </th>
+         <th >
+            State
+        </th>
+         <th >
+            Country
+        </th>
+         <th>
+            GPA
+        </th>
+         <th >
+            e-mail
+        </th>
+         <th >
+            imgURL
+        </th>
+         <th >
+            is_Employed
+        </th>
+            {{#each objects}}
+        <tr >
+            <td >{{member_id}}</td>
+            <td >{{name}}</td>
+            <td >{{city}}</td>
+            <td >{{state}}</td>
+            <td >{{country}}</td>
+            <td >{{gpa}}</td>
+            <td >{{email}}</td>
+            <td >{{imgurl}}</td>
+            <td >{{is_employed}}</td>
+            <td >{{phone}}</td>
+            <td>{{Project_name}}</td>
+            <td>{{project_description}}</td>
+            <td>{{skill_name}}</td>
+             
+        </tr>{{/each}}
+    </table>
+    
+</body>
+</html>
