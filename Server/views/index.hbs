@@ -199,24 +199,26 @@ eduDate.setAttribute('value','2013-01-08')
 
 function generateCV(){
     console.log("generating cv");
-    let nf = document.getElementById('nameF').value;
+    
     let name1 = document.getElementById('name1');
     //name1.innerHTML=nf;
-    document.getElementById('name2').innerHTML = nf;
-   
-    document.getElementById("addressT").innerHTML = document.getElementById("addressField").value;
+   var ci=document.getElementById('city').value
+   var st=document.getElementById('state').value
+    var cu=document.getElementById('country').value
+   var addessString=`<p>City : ${ci} State : ${st} Country : ${cu}</p>`
+    document.getElementById("addressT").innerHTML = addessString
     
-    document.getElementById("instaT").innerHTML = document.getElementById("instaField").value;
-    document.getElementById("linkedinT").innerHTML = document.getElementById("linkedinField").value;
+   /// document.getElementById("instaT").innerHTML = document.getElementById("instaField").value;
+   // document.getElementById("linkedinT").innerHTML = document.getElementById("linkedinField").value;
     document.getElementById("objT").innerHTML = document.getElementById("o").value;
    
-    let we=document.getElementsByClassName("weField");
+    /*let we=document.getElementsByClassName("weField");
     let str="";
     for(let e of we)
     {
         str=str+`<li>${e.value}</li>`;
     }
-    document.getElementById("weT").innerHTML=str;
+    document.getElementById("weT").innerHTML=str;*/
     
    /*let ee=document.getElementsByClassName("eqField");
     let str1="";
@@ -256,13 +258,14 @@ document.getElementById("eqT").innerHTML=str1;*/
     
    let cc=document.getElementsByClassName("contactField");
    console.log(cc)
+   console.log("ksks")
     let str2="";
     for(let e of cc)
     {
-        str2=str2+`<p>${e.value},</p>`;
+        str2=str2+`<p>${e.value}</p>`;
     }
     document.getElementById("contactT").innerHTML=str2;
-     console.log("ksks")
+  
      let a=document.getElementsByClassName("certName");
      let b=document.getElementsByClassName("certDesc")
     console.log(a[0].value)
@@ -273,11 +276,12 @@ document.getElementById("eqT").innerHTML=str1;*/
     }
     document.getElementById("certReplace").innerHTML=str3;
      b=document.getElementsByClassName("skillName")
+     a=document.getElementsByClassName("levelOfExpertise")
     
      str3="";
     for(let i=0;i<b.length;i++)
     {
-        str3=str3+`<p>${b[i].value}</p>`;
+        str3=str3+`<p>${b[i].value} : ${a[i].value}  </p>`;
     }
     document.getElementById("skillReplace").innerHTML=str3;
      a=document.getElementsByClassName("accName");
@@ -347,6 +351,28 @@ document.getElementById("eqT").innerHTML=str1;*/
     }
     console.log(str3)
     document.getElementById("jReplace").innerHTML=str3;
+    k=document.getElementsByClassName('linkedin')
+    l=document.getElementsByClassName('github')
+    str3=""
+    console.log(k[0])
+    for(let i=0;i<k.length;i++){
+      str3=str3+`<p><a href='/${k[i].value}'>${k[i].value}</a></p>`
+    }
+    document.getElementById('linkedinT').innerHTML=str3
+     str3=""
+    for(let i=0;i<l.length;i++){
+      str3=str3+`<p><a href='${l[i].value}'>${l[i].value}</a></p>`
+    }
+    document.getElementById('githubT').innerHTML=str3
+    m=document.getElementsByClassName("others")
+    str3=""
+    for(let i=0;i<m.length;i++){
+      str3=str3+`<p><a href='${m[i].value}'>${m[i].value}</a></p>`
+    }
+    document.getElementById("othLink").innerHTML=str3
+
+    
+    
 }
 function printCV(){
     window.print();
@@ -855,28 +881,37 @@ oth.setAttribute('name','others')
 
 <div class='col-md-4 text-center' style="background-color:aquamarine" >
 <div class='container'>
+<div class="card mt-4">
+  <div class="card-header" style="background-color:aquamarine">
+<h3>Contact</h3>
 
-<div>
-  <ul id="contactT">
-    <li>Contact Number 1</li>
-    <li>Contact Number 2</li>
-  </ul>
 </div>
-<p id="addressT">Address </p>
+
+  <div  id="contactT">
+    <p>Contact Number 1</p>
+    <p>Contact Number 2</p>
+  
+</div></div>
+<div id="addressT"><p>Address</p> </div>
 <hr/>
+<div id="linkedinT">
+
 <p>
-<a id="linkedinT" href='#'>Linkedin Link</a>
+<a  href='#'>Linkedin Link</a>
 </p>
+</div>
+<div id='githubT'>
 <p>
-<a id="instaT" href='#'>Instagram Link</a>
+<a href='#'>Github Link</a>
 </p>
-<p>
-<a id="fbT" href='#'>Facebook Link</a>
-</p>
+</div>
+<div id="othLink">
+  <p><a href='#'>Other social media</a></p>
+</div>
 </div>
 <h6>Skills</h6>
-<ul id="skillReplace"><li>Skill 1</li>
-<li>Skill 2</li></ul>
+<div id="skillReplace"><p>Skill 1</p>
+<p>Skill 2</p></div>
 <div class="card mt-4">
 <div class="card-header" style="background-color:aquamarine">
 <h3>Recommendations</h3>
@@ -903,7 +938,7 @@ oth.setAttribute('name','others')
 <p id="objT">Sample objective </p>
 </div>
 </div>
-<div class="card mt-4">
+<!--<div class="card mt-4">
 <div class="card-header" style="background-color:aquamarine">
 <h3>Work Experience</h3>
 
@@ -915,7 +950,7 @@ oth.setAttribute('name','others')
 <li>Work Company</li>
 </ul>
 </div>
-</div>
+</div>-->
 <div class="card mt-4">
 <div class="card-header" style="background-color:aquamarine">
 <h3>Academic Qualification</h3>
