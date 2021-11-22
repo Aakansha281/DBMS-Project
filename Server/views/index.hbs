@@ -97,6 +97,7 @@ let stDate = document.createElement("input");
  stDate.classList.add("mt-2")
 stDate.classList.add("stDate")
 stDate.setAttribute('type','date')
+stDate.setAttribute('value','2013-01-08')
 stDate.setAttribute('name','stDate')
 
   j.insertBefore( stDateL,jB)
@@ -110,7 +111,7 @@ let enDate = document.createElement("input");
 enDate.classList.add("enDate")
 enDate.setAttribute('type','date')
 enDate.setAttribute('name','enDate')
-
+enDate.setAttribute('value','2013-01-08')
   j.insertBefore( enDateL,jB)
   j.insertBefore(enDate,jB)
 
@@ -179,6 +180,7 @@ let gpa = document.createElement("input");
 gpa.setAttribute('id','gpa')
  gpa.setAttribute('name','gpa')
  gpa.setAttribute('placeholder','Enter here');
+ gpa.setAttribute('value','0.0');
   e.insertBefore( gpaL,eduButton)
   e.insertBefore(gpa,eduButton)
   //Time
@@ -190,7 +192,7 @@ gpa.setAttribute('id','gpa')
   eduDate.classList.add("eduDate")
 eduDate.setAttribute('type','date')
  eduDate.setAttribute('name','eduDate')
-
+eduDate.setAttribute('value','2013-01-08')
   e.insertBefore( eduDateL,eduButton)
   e.insertBefore(eduDate,eduButton)
 }
@@ -303,20 +305,22 @@ document.getElementById("eqT").innerHTML=str1;*/
      b=document.getElementsByClassName("courseName")
       d=document.getElementsByClassName("courseLocation")
      let g=document.getElementsByClassName("gpa")
+     let r=document.getElementsByClassName("eduDate")
      str3="";
     for(let i=0;i<a.length;i++)
     {
-        str3=str3+`<p>School Name  : ${a[i].value}  Course : ${b[i].value} Location : ${d[i].value}  GPA : ${g[i].value}</p>`;
+        str3=str3+`<p>School Name  : ${a[i].value}  Course : ${b[i].value} Location : ${d[i].value}  GPA : ${g[i].value}   Date : ${r[i]}</p>`;
     }
     document.getElementById("eReplace").innerHTML=str3;
 
     a=document.getElementsByClassName("projectName");
      b=document.getElementsByClassName("projectDescription")
+     r=document.getElementsByClassName("workDate")
     console.log(a)
      str3="";
     for(let i=0;i<a.length;i++)
     {
-        str3=str3+`<p>Project Name : ${a[i].value}   Description: ${b[i].value}  </p>`;
+        str3=str3+`<p>Project Name : ${a[i].value}   Description: ${b[i].value}  Date : ${r[i].value}</p>`;
     }
     document.getElementById("prReplace").innerHTML=str3;
     a=document.getElementsByClassName("pLink");
@@ -492,7 +496,7 @@ workDateL.innerHTML="Work Date"
 workDate.classList.add("workDate")
 workDate.setAttribute('type','date')
 workDate.setAttribute('name','workDate')
-
+workDate.setAttribute('value','2013-01-08')
    p.insertBefore(workDateL,pButton)
  p.insertBefore(workDate,pButton)
 
@@ -576,6 +580,48 @@ function addp(){
  p.insertBefore(pDescriptionL, pButton)
  p.insertBefore(pDescription, pButton)
 }
+function addNewLinkedinField(){
+  let Linkedin=document.createElement('input')
+  
+  
+  Linkedin.classList.add('form-control')
+ Linkedin.classList.add('mt-2')
+  Linkedin.classList.add('linkedin')
+  Linkedin.setAttribute('name','linkedin')
+  Linkedin.setAttribute('placeholder','Enter here');
+  let l=document.getElementById("l")
+  let linkedinAddButton=document.getElementById("linkedinAddButton")
+  l.insertBefore(Linkedin,linkedinAddButton)
+
+}
+function addNewGithubField(){
+  let github=document.createElement('input')
+  
+  
+  github.classList.add('form-control')
+ github.classList.add('mt-2')
+  github.classList.add('github')
+github.setAttribute('name','git')
+ github.setAttribute('placeholder','Enter here');
+  let g=document.getElementById("g")
+  let githubAddButton=document.getElementById("githubAddButton")
+  g.insertBefore(github,githubAddButton)
+
+}
+function addNewOthField(){
+  let oth=document.createElement('input')
+  
+  
+ oth.classList.add('form-control')
+oth.classList.add('mt-2')
+  oth.classList.add('others')
+oth.setAttribute('name','others')
+ oth.setAttribute('placeholder','Enter here');
+  let o=document.getElementById("oth")
+  let othAddButton=document.getElementById("othAddButton")
+  o.insertBefore(oth,othAddButton)
+
+}
 </script>
 <form action="/home" method="POST">
 <div class="row" style="margin-left:60px">
@@ -620,25 +666,28 @@ function addp(){
 </div>
 </div>
   <p class='text-secondary my-3'>Important Links</p>
-  <div class="form-group mt-2">
-    <label for="fbField">Facebook</label>
-    <input type="text" name="fb" class="form-control" id="fbField" placeholder="Enter here">
-    
-  </div>
-  <div class="form-group mt-2">
-    <label for="instaField">Others</label>
-    <input type="text" class="form-control" name="others" id="instaField" placeholder="Enter here">
-    
-  </div>
-   <div class="form-group mt-2">
-    <la bel for="instaField">Github</label>
-    <input type="text" class="form-control"name="git" id="instaField" placeholder="Enter here">
-    
-  </div>
-   <div class="form-group mt-2">
+  <div class="form-group mt-2" id="l">
     <label for="linkedinField">Linkedin</label>
-    <input type="text" class="form-control" name="linkedin" id="linkedinField" placeholder="Enter  here">
-    
+    <input type="text" class="form-control linkedin" name="linkedin" id="linkedinField" placeholder="Enter  here">
+    <div class='container text-center mt-2' id='linkedinAddButton'>
+<button  type="button" class='btn btn-primary btn-sm' onclick="addNewLinkedinField()">Add</button>
+</div>
+  </div>
+   <div class="form-group mt-2" id="g">
+    <label >Github</label>
+    <input type="text" class="form-control github" name="git"  placeholder="Enter here">
+     <div class='container text-center mt-2' id='githubAddButton'>
+<button  type="button" class='btn btn-primary btn-sm' onclick="addNewGithubField()">Add</button>
+</div>
+  </div>
+   
+  
+  <div class="form-group mt-2" id="oth">
+    <label>Others</label>
+    <input type="text" class="form-control others" name="others" id="others" placeholder="Enter here">
+     <div class='container text-center mt-2' id='othAddButton'>
+<button  type="button" class='btn btn-primary btn-sm' onclick="addNewOthField()">Add</button>
+</div>
   </div>
   <label class='text-secondary my-3'>Skills</label>
 <div class='form-group mt-2 skill' id="skill">
@@ -717,12 +766,12 @@ function addp(){
 <div>
   <label>GPA</label>
 
-  <input id="gpa" name="gpa" class="form-control gpa" type="text" placeholder="Enter here"></input>
+  <input id="gpa" value="0.0" name="gpa" class="form-control gpa" type="text" placeholder="Enter here"></input>
 </div>
 <div>
   <label>Year of study</label>
 
- <input class='form-control eduDate' name="eduDate" id="eduDate" type="date" ></input>
+ <input class='form-control eduDate' value='2013-01-08' name="eduDate" id="eduDate" type="date" ></input>
  </div>
  <div class='container text-center mt-2' id='eduButton'>
 <button  type="button" class='btn btn-primary btn-sm' onclick='addEducation()'>Add</button>
@@ -737,7 +786,7 @@ function addp(){
   <label >Project Description</label>
   <input type="text" class="form-control projectDescription" id="projectD" name="projectDescription"></input>
   <label>Work date</label>
-  <input type="date" class='form-control workDate' id="workDate" name="workDate"></input>
+  <input type="date" class='form-control workDate' value='2013-01-08' id="workDate" name="workDate"></input>
 <div class='container text-center mt-2' id='prButton'>
 <button  type="button" class='btn btn-primary btn-sm' onclick='addNewProj()'>Add</button>
 </div>
@@ -769,9 +818,9 @@ function addp(){
      <label >Company</label>
     <input type="text" class="form-control company" id="company" name="company" placeholder="Enter here">
     <label >Start Date</label>
-    <input type="date" class="form-control stDate" id="stDate" name="stDate" placeholder="Enter here">
+    <input type="date" class="form-control stDate" value="2013-01-08" id="stDate" name="stDate" placeholder="Enter here">
     <label >End Date</label>
-    <input type="date" class="form-control enDate" id="enDate" name="enDate" placeholder="Enter here">
+    <input type="date" class="form-control enDate" value="2013-01-08" id="enDate" name="enDate" placeholder="Enter here">
       <div class='container text-center mt-2' id='jB'>
 <button  type="button" class='btn btn-primary btn-sm' onclick='addJ()'>Add</button>
 </div>
