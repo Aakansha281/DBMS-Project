@@ -88,20 +88,23 @@ var u=req.body.projectName
 if(Array.isArray(u)){
     for(let i=0;i<u.length;i++)
     {   console.log("*****")
-        console.log(`insert into project(Project_name, project_description) values
-    ('${u[i]}', '${v[i]}')`)}
-        project_details = pool.query(`insert into project(Project_name, project_description) values
+        
+        project_details =await  pool.query(`insert into project(Project_name, project_description) values
         ('${u[i]}', '${v[i]}') RETURNING *`)
+        console.log(`insert into project(Project_name, project_description) values
+    ('${u[i]}', '${v[i]}')`)
         p_id= project_details.rows[0].project_id
         console.log(`p_id${p_id}`)
-        console.log(`
-        insert into worked_on values
-        ('${current_member_id}', '${p_id}', '${w[i]}')`)
+        
         pool.query(`
         insert into worked_on values
         ('${current_member_id}', '${p_id}', '${w[i]}')`)
+
+        console.log(`
+        insert into worked_on values
+        ('${current_member_id}', '${p_id}', '${w[i]}')`)
     }
-   
+}
     else{console.log("%%%")
         project_details = await  pool.query(`insert into project(Project_name, project_description) values
     ('${req.body.projectName}', '${req.body.projectDescription}') RETURNING *`)
@@ -109,12 +112,12 @@ if(Array.isArray(u)){
     console.log(`p_id${p_id}`)
     console.log(`
     insert into worked_on values
-    ('${current_member_id}', '${p_id}', '${req.body.workDate}')`)
+    (${current_member_id}, ${p_id}, ${req.body.workDate})`)
     pool.query(`
         insert into worked_on values
         ('${current_member_id}', '${p_id}', '${req.body.workDate}')`)
 }
-
+console.log("%%%")
  u=req.body.accName
  v=req.body.accDesc
 if(Array.isArray(req.body.accName)){
@@ -126,7 +129,9 @@ if(Array.isArray(req.body.accName)){
     }
    }
     else{ pool.query(`insert into accomplishments(member_id,accomplishment_name, accomplishment_description) values
-    ('${current_member_id}','${req.body.accName}', '${req.body.accDesc}')`,(err,res)=>{console.log(err,res)})}
+    ('${current_member_id}','${req.body.accName}', '${req.body.accDesc}')`) 
+    console.log("%%%")
+}
 var sk=req.body.skillName;
 var loe=req.body.levelOfExpertise;
 if(Array.isArray(req.body.skillName)){
@@ -142,7 +147,7 @@ if(Array.isArray(req.body.skillName)){
     current_skill_id = skill_details.rows[0].skill_id
     pool.query(`insert into Good_at(member_id, skill_id, level_of_expertise) values
     ('${current_member_id}', '${current_skill_id}', '${req.body.levelOfExpertise}')`)
-
+    
 }
 var arr1=req.body.certName
 var arr2=req.body.certDesc
@@ -154,7 +159,7 @@ if(Array.isArray(req.body.certName)){
     }
    }
     else{ pool.query(`insert into certifications(member_id,cert_name, Description) values
-    ('${current_member_id}',s'${req.body.certName}', '${req.body.cerDesc}')`,(err,res)=>{console.log(err,res)})}
+    ('${current_member_id}','${req.body.certName}', '${req.body.cerDesc}')`,(err,res)=>{console.log(err,res)})}
 /*pool.query(`
 insert into job(company, title, description, location) values
 ('${req.body.company}', '${req.body.jobName}', '${req.body.jobDesc}', '${req.body.jobLocation}')`)*/
@@ -175,7 +180,7 @@ if(Array.isArray(b1)){
         ('${b4[i]}', '${b1[i]}', '${b2[i]}', '${b3[i]}') RETURNING *`)
         j_id = j_details.rows[0].job_id
         e_details = await pool.query(`insert into experience(start_date,end_date,job_id) values
-        ('${b5[i]}', '${b6[i]}',  ${j_id}) RETURNING *`,(err,res)=>{console.log(`insert into experience(start_date,end_date,job_id) values
+        ('${b5[i]}', '${b6[i]}', ' ${j_id}') RETURNING *`,(err,res)=>{console.log(`insert into experience(start_date,end_date,job_id) values
         ('${b5[i]}', '${b6[i]}',  ${j_id})`)})
         e_id=e_details.rows[0].experience_id
         pool.query(`insert into experienced_in values
@@ -190,16 +195,21 @@ if(Array.isArray(b1)){
     console.log(j_details)
     j_id = j_details.rows[0].job_id
     console.log(`jid ${j_id}`)
+    console.log('*')
     console.log(`insert into experience(start_date,end_date,job_id) values
     ('${req.body.stDate}', '${req.body.enDate}',  ${j_id})`)
-    e_details = await pool.query(`insert into experience(start_date,end_date,job_id) values
-        ('${req.body.stDate}', '${req.body.enDate}',  ${j_id}) RETURNING *`)
+    console.log('**')
+    
+      
+        e_details = await pool.query(`insert into experience(start_date,end_date,job_id) values
+        ('${req.body.stDate}', '${req.body.enDate}', ' ${j_id}') RETURNING *`)
+          
         e_id=e_details.rows[0].experience_id
         console.log(`eid ${e_id}`)
         pool.query(`insert into experienced_in values
         ( ${current_member_id}, ${e_id})`)
 
-}
+}console.log('***')
 if(req.body.recommendationLink){
     var a1=req.body.recommendationLink
 var a2=req.body.rname
@@ -230,16 +240,41 @@ if(Array.isArray(a1)){
        else{ pool.query(`insert into publications(member_id, url , name, description) values
     ('${current_member_id}','${req.body.pLink}', '${req.body.pname}', '${req.body.pDescription}')`)}}
 
-pool.query(`insert into author(member_id,url) values
-('${current_member_id}','${req.body.pLink})`,(err,res)=>{console.log(res)})
-if(req.body.linkedin){
+//pool.query(`insert into author(member_id,url) values
+//('${current_member_id}','${req.body.pLink})`)
+
+a1=req.body.linkedin
+a2=req.body.git
+a3=req.body.others
+console.log("reached1")
+if(Array.isArray(a1)){console.log("reached2")
+    for(let i=0;i<a1.length;i++){
+if(a1[i]){
 pool.query(`
 insert into social_media(member_id,linkedin,github) values
-('${current_member_id}','${req.body.linkedin}','${req.body.git}')` ,(err,res)=>{
-    console.log(err,`
-    insert into social_media(linkedin,github) values
-    ('${req.body.linkedin}','${req.body.git}')`)
-}) }
+('${current_member_id}','${a1[i]}','${a2[i]}')` ) 
+console.log(`insert into social_media(member_id,linkedin,github) values
+('${current_member_id}','${a1[i]}','${a2[i]}')`)
+
+pool.query(`
+insert into other_skills(member_id,other_link) values
+('${current_member_id}','${a3[i]}')` ) 
+console.log(`insert into other_skills(member_id,other_link) values
+('${current_member_id}','${a3[i]}')`)}
+}}
+else{if(req.body.linkedin){
+    pool.query(`
+    insert into social_media(member_id,linkedin,github) values
+    ('${current_member_id}','${req.body.linkedin}','${req.body.git}')` ) 
+    console.log(`insert into social_media(member_id,linkedin,github) values
+    ('${current_member_id}','${req.body.linkedin}','${req.body.git}')`)
+    pool.query(`
+    insert into other_skills(member_id,other_link) values
+    ('${current_member_id}','${req.body.others}')` ) 
+    console.log(`insert into other_skills(member_id,other_link) values
+    ('${current_member_id}','${req.body.others}')`)}}
+    
+
   
   
 })
@@ -381,5 +416,5 @@ app.post('/k', async (req, res) => {
 })
 
 app.listen(7000, () => {
-    console.log('Server running on localhost 5000')
+    console.log('Server running on localhost 7000')
 })
