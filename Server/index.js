@@ -188,8 +188,8 @@ app.post('/home', async (req, res) => {
                             console.log(`insert into experience(start_date,end_date,job_id) values('${b5[i]}', '${b6[i]}',  ${j_id})`)
                         })
                         // e_id = e_details.rows[0].experience_id
-                        pool.query(`insert into experienced_in values( ${current_member_id}, ${e_id})`, (err, res) => {
-                            console.log(`insert into experienced_in values( ${current_member_id}, ${e_id})`)
+                        await pool.query(`insert into experienced_in values( ${current_member_id}, ${e_id})`, (err, res) => {
+                            console.log(`insert into experienced_in values(${current_member_id}, ${e_id})`)
                         })
                     }
 
@@ -236,15 +236,21 @@ app.post('/home', async (req, res) => {
             a1 = req.body.pLink
             a2 = req.body.pname
             a3 = req.body.pDescription
-            if (Array.isArray(a1)) {
-                for (let i = 0; i < a1.length; i++) {
-                    pool.query(`insert into publications( member_id,url , name, description) values('${current_member_id}','${a1[i]}', '${a2[i]}', '${a3[i]}')`)
+            if (a1) {
+                if (Array.isArray(a1)) {
+                    for (let i = 0; i < a1.length; i++) {
+                        pool.query(`insert into publications( member_id,url , name, description) values('${current_member_id}','${a1[i]}', '${a2[i]}', '${a3[i]}')`)
+                        pool.query(`insert into author values('${a1[i]}', '${current_member_id}')`, (err, res) => { console.log(res) })
+                        console.log(`insert into author values('${a1[i]}', '${current_member_id}')`);
+
+                    }
+                }
+                else {
+                    pool.query(`insert into publications(member_id, url , name, description) values('${current_member_id}','${req.body.pLink}', '${req.body.pname}', '${req.body.pDescription}')`)
+                    pool.query(`insert into author values('${req.body.pname}', '${current_member_id}')`, (err, res) => { console.log(res) })
+                    console.log(`insert into author values('${req.body.pname}', '${current_member_id}')`)
                 }
             }
-            else {
-                pool.query(`insert into publications(member_id, url , name, description) values('${current_member_id}','${req.body.pLink}', '${req.body.pname}', '${req.body.pDescription}')`)
-            }
-            pool.query(`insert into author(member_id,url) values('${current_member_id}','${req.body.pLink})`, (err, res) => { console.log(res) })
         }
 
         let li, gi = [req.body.linkedin, req.body.git]
@@ -269,6 +275,7 @@ app.get('/', (req, res) => {
 //handling post request for custom query e.g. select * from person;
 app.post('/f', async (req, res) => {
     const results = await pool.query(req.body.r)
+    console.log(results.rows)
     var wrapper = { objects: results.rows }
     res.render("final", wrapper)
 })
@@ -324,7 +331,7 @@ app.post('/fff', async (req, res) => {
         }
         if (gpa) {
             if (and_flag == true) q += 'and '
-            q += `member_id in (select member_id from education natural join studied_in where gpa > ${gpa}) `
+            q += `member_id in (select member_id from education natural join studied_in where gpa >= ${gpa}) `
             if (and_flag == false) and_flag = true;
         }
         if (course) {
@@ -356,8 +363,18 @@ app.post('/fff', async (req, res) => {
         }
         q += ';'
         console.log(q)
+
+        //display the skills of the person:
         const results = await pool.query(q);
-        var wrapper = { objects: results.rows }
+        // console.log(`select * from (select name, skill_name from skill, person where (skill_id, member_id) in (select skill_id, member_id from person natural join good_at)) as foo where foo.name = ${results.rows[0].name}`)
+        const skill_res = await pool.query(`select name, skill_name from person natural join skill natural join good_at;`)
+
+        const edu_res = await pool.query(`select name, location, course, gpa, study_year from person natural join studied_in natural join education;`)
+
+        const job_res = await pool.query(`select name, years_of_exp, company, title, description, location from (experience natural join job) natural join experienced_in natural join person;`)
+
+        console.log(results.rows)
+        var wrapper = { objects: results.rows, skill_obj: skill_res.rows, edu_obj: edu_res.rows, job_obj: job_res.rows }
         res.render("final", wrapper)
 
     }
@@ -395,6 +412,7 @@ app.post('/k', async (req, res) => {
             );
             `
         const searchResults = await pool.query(q)
+        console.log(searchResults.rows)
         // res.json(searchResults.rows)
         var wrapper = { objects: searchResults.rows }
         res.render("final", wrapper)

@@ -155,35 +155,3 @@ create table author(url varchar(100) not null ,
 	member_id serial not null);
 alter table author add constraint aufk foreign key(member_id) references person(member_id);
 alter table author add constraint aupk primary key(url,member_id);
-
-
-	 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

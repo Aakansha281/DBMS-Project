@@ -342,6 +342,7 @@
       document.alert("Added New Record")
 
     }
+
     function printCV() {
       window.print();
     }
@@ -376,10 +377,8 @@
       //adding the certificate description input field
       c.insertBefore(certdescL, cert)
       c.insertBefore(certdesc, cert)
-
-
-
     }
+
     function addNewSkill() {
       console.log('Adding new Skill')
       //node for skill name
@@ -581,40 +580,43 @@
         <h1 class='text-center my-2'> Resume Generator </h1>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-5" style="margin-left: 100px;">
         <h3>Personal Information</h3>
         <div class="form-group">
           <label for="nameF">Your Name</label>
-          <input type="text" class="form-control nameF" id="nameF" placeholder="Enter your name" name="n">
+          <input type="text" class="form-control nameF" id="nameF" placeholder="Enter your name" name="n"
+            value="Default Name">
 
         </div>
 
         <div class="form-group">
           <label for="addressField">Your Email</label>
           <textarea type="text" name="email" class="form-control email" id="addressField"
-            placeholder="Enter your address" rows="5s"></textarea>
+            placeholder="Enter your address" rows="5s">default@gmail.com</textarea>
 
         </div>
         <div class="form-group">
           <label>City</label>
-          <input type="text" name="city" class="form-control city" id="city" placeholder="Enter your city"></input>
+          <input type="text" name="city" class="form-control city" id="city" placeholder="Enter your city"
+            value="Mumbai"></input>
 
         </div>
         <div class="form-group">
           <label>State</label>
-          <input type="text" name="state" class="form-control state" id="state" placeholder="Enter your state"></input>
+          <input type="text" name="state" class="form-control state" id="state" placeholder="Enter your state"
+            value="MH"></input>
 
         </div>
         <div class="form-group">
           <label>Country</label>
-          <input type="text" name="country" class="form-control country" id="country"
-            placeholder="Enter your country"></input>
+          <input type="text" name="country" class="form-control country" id="country" placeholder="Enter your country"
+            value="India"></input>
 
         </div>
 
         <div class='form-group mt-2' id='contactNumber'>
           <label for="">Contact Number</label>
-          <input type="text" value="" class="form-control contactNumber contactField" id="contactField"
+          <input type="text" value="101010" class="form-control contactNumber contactField" id="contactField"
             name="contactNumber" placeholder="Enter here"></input>
           <div class='container text-center mt-2' id='contactAddButton'>
             <button type="button" class='btn btn-primary btn-sm' onclick="addNewContactField()">Add</button>
@@ -623,34 +625,38 @@
         <p class='text-secondary my-3'>Important Links</p>
         <div class="form-group mt-2">
           <label for="fbField">Facebook</label>
-          <input type="text" name="fb" class="form-control" id="fbField" placeholder="Enter here">
+          <input type="text" name="fb" class="form-control" id="fbField" placeholder="Enter here"
+            value="default@fb.com">
 
         </div>
         <div class="form-group mt-2">
           <label for="instaField">Others</label>
-          <input type="text" class="form-control" name="others" id="instaField" placeholder="Enter here">
+          <input type="text" class="form-control" name="others" id="instaField" placeholder="Enter here"
+            value="default@other.com">
 
         </div>
         <div class="form-group mt-2">
           <la bel for="instaField">Github</label>
-            <input type="text" class="form-control" name="git" id="instaField" placeholder="Enter here">
+            <input type="text" class="form-control" name="git" id="instaField" placeholder="Enter here"
+              value="default@github.com">
 
         </div>
         <div class="form-group mt-2">
           <label for="linkedinField">Linkedin</label>
-          <input type="text" class="form-control" name="linkedin" id="linkedinField" placeholder="Enter  here">
+          <input type="text" class="form-control" name="linkedin" id="linkedinField" placeholder="Enter  here"
+            value="default@linkedin.com">
 
         </div>
         <label class='text-secondary my-3'>Skills</label>
         <div class='form-group mt-2 skill' id="skill">
           <label for="">Skill Name</label>
-          <input class="form-control skillName" type="text" name="skillName" id="skillName"></input>
+          <input class="form-control skillName" type="text" name="skillName" id="skillName" value="Coding"></input>
 
 
           <div class='form-group mt-2'>
             <label for="">Level of Expertise</label>
-            <input class="form-control levelOfExpertise" type="text" name="levelOfExpertise"
-              id="levelOfExpertise"></input>
+            <input class="form-control levelOfExpertise" type="text" name="levelOfExpertise" id="levelOfExpertise"
+              value="10"></input>
           </div>
           <div class='container text-center mt-2' id='skillButton'>
             <button type="button" class='btn btn-primary btn-sm' onclick="addNewSkill()">Add</button>
@@ -660,9 +666,11 @@
           <p class='text-secondary my-3'>Accomplishments</p>
           <div class="form-group mt-2" id="acc">
             <label>Accomplishment Name</label>
-            <input type="text" class="form-control accName" id="accName" name="accName" placeholder="Enter here">
+            <input type="text" class="form-control accName" id="accName" name="accName" placeholder="Enter here"
+              value="Best Coder">
             <label>Acc Description</label>
-            <input type="text" class="form-control accDesc" id="accDesc" name="accDesc" placeholder="Enter here">
+            <input type="text" class="form-control accDesc" id="accDesc" name="accDesc" placeholder="Enter here"
+              value="Won the title">
             <div class='container text-center mt-2' id='accButton'>
               <button type="button" class='btn btn-primary btn-sm' onclick="addNewAcc()">Add</button>
             </div>
@@ -673,24 +681,25 @@
           <div class="form-group mt-2 " id="rcc">
             <label> Recommendation Link</label>
             <input type="text" class="form-control rlink" id="recommendationLink" name="recommendationLink"
-              placeholder="Enter here">
+              placeholder="Enter here" value="DefaultRcmnder.com">
             <label> Name of Recommender</label>
-            <input type="text" class="form-control rname" id="rname" name="rname" placeholder="Enter here">
+            <input type="text" class="form-control rname" id="rname" name="rname" placeholder="Enter here"
+              value="DefaultRcmnder">
             <label>Designation of Recommender</label>
-            <input type="text" class="form-control rdesg" id="rdesignation" name="rdesignation"
-              placeholder="Enter here">
+            <input type="text" class="form-control rdesg" id="rdesignation" name="rdesignation" placeholder="Enter here"
+              value="professor">
             <div class='container text-center mt-2' id='rccButton'>
               <button type="button" class='btn btn-primary btn-sm' onclick="addRcc()">Add</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-5">
         <h3>Professional Information </h3>
         <div class='form-group mt-2'>
           <label for="">Objective</label>
           <textarea type="text" class="form-control objective" name="objective" id="o" placeholder="Enter here"
-            rows="2"></textarea>
+            rows="2">This is the objective of Default Name</textarea>
 
         </div>
         <div class='form-group mt-2 ' id='we'>
@@ -710,28 +719,28 @@
               <label>Institution Name</label>
 
               <input id="institutionName" name="educationId" class="form-control institutionName" type="text"
-                placeholder="Enter here"></input>
+                placeholder="Enter here" value="PESU"></input>
             </div>
             <label>Course Name</label>
 
             <input id="courseName" name="courseName" class="form-control courseName" type="text"
-              placeholder="Enter here"></input>
-            >
+              placeholder="Enter here" value="BTech"></input>
             <div>
               <label>Course Location</label>
 
               <input id="courseLocation" name="courseLocation" class="form-control courseLocation" type="text"
-                placeholder="Enter here"></input>
+                placeholder="Enter here" value="India"></input>
             </div>
             <div>
               <label>GPA</label>
 
-              <input id="gpa" name="gpa" class="form-control gpa" type="text" placeholder="Enter here"></input>
+              <input id="gpa" name="gpa" class="form-control gpa" type="text" placeholder="Enter here"
+                value="9.9"></input>
             </div>
             <div>
               <label>Year of study</label>
 
-              <input class='form-control eduDate' name="eduDate" id="eduDate" type="date"></input>
+              <input class='form-control eduDate' name="eduDate" id="eduDate" type="date" value="1990-01-01"></input>
             </div>
             <div class='container text-center mt-2' id='eduButton'>
               <button type="button" class='btn btn-primary btn-sm' onclick='addEducation()'>Add</button>
@@ -742,12 +751,13 @@
             <label for="" style="padding:10px;">Project Work</label>
             <div id="pr">
               <label for="" name="projectName">Project Name</label>
-              <input type="text" class="form-control projectName" id="projectName" name="projectName"></input>
+              <input type="text" class="form-control projectName" id="projectName" name="projectName"
+                value="DBMS"></input>
               <label>Project Description</label>
-              <input type="text" class="form-control projectDescription" id="projectD"
-                name="projectDescription"></input>
+              <input type="text" class="form-control projectDescription" id="projectD" name="projectDescription"
+                value="Resume Mgmt."></input>
               <label>Work date</label>
-              <input type="date" class='form-control workDate' id="workDate" name="workDate"></input>
+              <input type="date" class='form-control workDate' id="workDate" name="workDate" value="2021-01-01"></input>
               <div class='container text-center mt-2' id='prButton'>
                 <button type="button" class='btn btn-primary btn-sm' onclick='addNewProj()'>Add</button>
               </div>
@@ -759,9 +769,11 @@
           <p class='text-secondary my-3'>Certifications</p>
           <div class="form-group mt-2" id="c">
             <label>Certficate Name</label>
-            <input type="text" class="form-control certName" id="certName" name="certName" placeholder="Enter here">
+            <input type="text" class="form-control certName" id="certName" name="certName" placeholder="Enter here"
+              value="Hackathon1">
             <label>Certficate Description</label>
-            <input type="text" class="form-control certDesc" id="certDesc" name="certDesc" placeholder="Enter here">
+            <input type="text" class="form-control certDesc" id="certDesc" name="certDesc" placeholder="Enter here"
+              value="Won the hackathon">
             <div class='container text-center mt-2' id='cert'>
               <button type="button" class='btn btn-primary btn-sm' onclick='addNewCertification()'>Add</button>
             </div>
@@ -771,18 +783,23 @@
           <p class='text-secondary my-3'>Job Details</p>
           <div class="form-group mt-2" id="j">
             <label>Job Title</label>
-            <input type="text" class="form-control jobName" id="jobName" name="jobName" placeholder="Enter here">
+            <input type="text" class="form-control jobName" id="jobName" name="jobName" placeholder="Enter here"
+              value="Developer">
             <label>Job Description</label>
-            <input type="text" class="form-control jobDesc" id="jobDesc" name="jobDesc" placeholder="Enter here">
+            <input type="text" class="form-control jobDesc" id="jobDesc" name="jobDesc" placeholder="Enter here"
+              value="Python Application programmer">
             <label>Job Location</label>
             <input type="text" class="form-control jobLocation" id="jobLocation" name="jobLocation"
-              placeholder="Enter here">
+              placeholder="Enter here" value="London">
             <label>Company</label>
-            <input type="text" class="form-control company" id="company" name="company" placeholder="Enter here">
+            <input type="text" class="form-control company" id="company" name="company" placeholder="Enter here"
+              value="DELL">
             <label>Start Date</label>
-            <input type="date" class="form-control stDate" id="stDate" name="stDate" placeholder="Enter here">
+            <input type="date" class="form-control stDate" id="stDate" name="stDate" placeholder="Enter here"
+              value="1990-01-01">
             <label>End Date</label>
-            <input type="date" class="form-control enDate" id="enDate" name="enDate" placeholder="Enter here">
+            <input type="date" class="form-control enDate" id="enDate" name="enDate" placeholder="Enter here"
+              value="2001-01-01">
             <div class='container text-center mt-2' id='jB'>
               <button type="button" class='btn btn-primary btn-sm' onclick='addJ()'>Add</button>
             </div>
@@ -792,12 +809,14 @@
           <p class='text-secondary my-3'>Publications</p>
           <div class="form-group mt-2 p" id='p'>
             <label> Publication Link</label>
-            <input type="text" class="form-control pLink" id="pLink" name="pLink" placeholder="Enter here">
+            <input type="text" class="form-control pLink" id="pLink" name="pLink" placeholder="Enter here"
+              value="publink.com">
             <label>Publication Name</label>
-            <input type="text" class="form-control pname" id="pname" name="pname" placeholder="Enter here">
+            <input type="text" class="form-control pname" id="pname" name="pname" placeholder="Enter here"
+              value="DBMSpub">
             <label>Publication description</label>
             <input type="text" class="form-control pDescription" id="pDescription" name="pDescription"
-              placeholder="Enter here">
+              placeholder="Enter here" value="desc. DBMSpub">
             <div class='container text-center mt-2' id='pButton'>
               <button type="button" class='btn btn-primary btn-sm' onclick='addp()'>Add</button>
             </div>
@@ -805,7 +824,7 @@
         </div>
       </div>
 
-      <div class='container text-center mt-3' style="padding-bottom:50px">
+      <div class='container text-center mt-5' style="padding-bottom:50px">
         <button class='btn btn-primary btn-lg' onclick="generateCV()">Generate CV</button>
       </div>
   </form>

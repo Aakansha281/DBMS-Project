@@ -1,70 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>tr:nth-child(even) {
-  background-color: rgba(150, 212, 212, 0.4);
-}
+<style>
+    tr:nth-child(even) {
+        background-color: rgba(150, 212, 212, 0.4);
+    }
 
-th:nth-child(even),td:nth-child(even) {
-  background-color: rgba(150, 212, 212, 0.4);
-}</style>>
+    th:nth-child(even),
+    td:nth-child(even) {
+        background-color: rgba(150, 212, 212, 0.4);
+    }
+</style>
 
 <body>
     <h2 style="margin-left: 560px; ">Query Results</h2>
     <table>
-        
-        </table>
-        <table style="margin-left: 180px; border:1px solid aquamarine">
-            <th  >
-            member_id
-        </th>
-         <th >
-            Name
-        </th>
-         <th >
-            City
-        </th>
-         <th >
-            State
-        </th>
-         <th >
-            Country
-        </th>
-         <th>
-            GPA
-        </th>
-         <th >
-            e-mail
-        </th>
-         <th >
-            imgURL
-        </th>
-         <th >
-            is_Employed
-        </th>
-            {{#each objects}}
-        <tr >
-            <td >{{member_id}}</td>
-            <td >{{name}}</td>
-            <td >{{city}}</td>
-            <td >{{state}}</td>
-            <td >{{country}}</td>
-            <td >{{gpa}}</td>
-            <td >{{email}}</td>
-            <td >{{imgurl}}</td>
-            <td >{{is_employed}}</td>
-            <td >{{phone}}</td>
-            <td>{{Project_name}}</td>
-            <td>{{project_description}}</td>
-            <td>{{skill_name}}</td>
-             
+
+    </table>
+    <table style="margin-left: 180px; border:1px solid aquamarine">
+        {{!-- <tr>
+            {{#if member_id}}
+            <th>
+                member_id
+            </th>
+            {{/if}}
+            {{#if name}}
+            <th>
+                Name
+            </th>
+            {{/if}}
+            {{#if city}}
+            <th>
+                City
+            </th>
+            {{/if}}
+            {{#if state}}
+            <th>
+                State
+            </th>
+            {{/if}}
+            {{#if country}}
+            <th>
+                Country
+            </th>
+            {{/if}}
+            {{#if gpa}}
+            <th>
+                GPA
+            </th>
+            {{/if}}
+            {{#if email}}
+            <th>
+                e-mail
+            </th>
+            {{/if}}
+            {{#if imgurl}}
+            <th>
+                imgURL
+            </th>
+            {{/if}}
+            {{#if is_Employed}}
+            <th>
+                is_Employed
+            </th>
+            {{/if}}
+        </tr> --}}
+
+        {{!-- <h3>{{objects.0.member_id}}</h3> --}}
+        <h2>{{test.content}}</h2>
+        {{!-- {{#each objects.[0]}} --}}
+        {{#if objects.0.member_id}}<th>member_id</th>{{/if}}
+        {{#if objects.0.job_id}}<th>job_id</th>{{/if}}
+        {{#if objects.0.skill_id}}<th>skill_id</th>{{/if}}
+        {{#if objects.0.experience_id}}<th>experience_id</th>{{/if}}
+        {{#if objects.0.accomplishment_id}}<th>accomplishment_id</th>{{/if}}
+        {{#if objects.0.project_id}}<th>project_id</th>{{/if}}
+        {{#if objects.0.cert_id}}<th>project_id</th>{{/if}}
+        {{#if objects.0.education_id}}<th>education_id</th>{{/if}}
+        {{#if objects.0.name}}<th>name</th>{{/if}}
+        {{#if objects.0.city}}<th>city</th>{{/if}}
+        {{#if objects.0.state}}<th>state</th>{{/if}}
+        {{#if objects.0.country}}<th>country</th>{{/if}}
+        {{#if objects.0.email}}<th>email</th>{{/if}}
+        {{#if objects.0.imgurl}}<th>imgurl</th>{{/if}}
+        {{#if objects.0.is_employed}}<th>is_employed</th>{{/if}}
+        {{#if objects.0.skill_name}}<th>skill_name</th>{{/if}}
+        {{#if objects.0.level_of_expertise}}<th>level_of_expertise</th>{{/if}}
+        {{#if objects.0.project_name}}<th>project_name</th>{{/if}}
+        {{#if objects.0.project_description}}<th>project_description</th>{{/if}}
+        {{#if objects.0.work_date}}<th>work_date</th>{{/if}}
+        {{#if objects.0.url}}<th>url</th>{{/if}}
+        {{#if objects.0.description}}<th>description</th>{{/if}}
+        {{#if objects.0.linkedin}}<th>linkedin</th>{{/if}}
+        {{#if objects.0.github}}<th>github</th>{{/if}}
+        {{#if objects.0.cert_name}}<th>cert_name</th>{{/if}}
+        {{#if objects.0.accomplishment_name}}<th>accomplishment_name</th>{{/if}}
+        {{#if objects.0.accomplishment_description}}<th>accomplishment_description</th>{{/if}}
+        {{#if objects.0.company}}<th>company</th>{{/if}}
+        {{#if objects.0.title}}<th>title</th>{{/if}}
+        {{#if objects.0.start_date}}<th>start_date</th>{{/if}}
+        {{#if objects.0.end_date}}<th>end_date</th>{{/if}}
+        {{#if objects.0.years_of_exp}}<th>years_of_exp</th>{{/if}}
+        {{#if objects.0.designation}}<th>designation</th>{{/if}}
+        {{#if objects.0.course}}<th>course</th>{{/if}}
+        {{#if objects.0.study_year}}<th>study_year</th>{{/if}}
+        {{#if objects.0.phone}}<th>phone</th>{{/if}}
+        {{#if objects.0.gpa}}<th>gpa</th>{{/if}}
+        {{#if objects.0.objective}}<th>objective</th>{{/if}}
+
+        {{!-- {{/each}} --}}
+
+        {{#each objects}}
+        <tr>
+            {{#if member_id}}<td>{{member_id}}</td>{{/if}}
+            {{#if job_id}}<td>{{job_id}}</td>{{/if}}
+            {{#if skill_id}}<td>{{skill_id}}</td>{{/if}}
+            {{#if experience_id}}<td>{{experience_id}}</td>{{/if}}
+            {{#if accomplishment_id}}<td>{{accomplishment_id}}</td>{{/if}}
+            {{#if project_id}}<td>{{project_id}}</td>{{/if}}
+            {{#if cert_id}}<td>{{project_id}}</td>{{/if}}
+            {{#if education_id}}<td>{{education_id}}</td>{{/if}}
+            {{#if name}}<td>{{name}}</td>{{/if}}
+            {{#if city}}<td>{{city}}</td>{{/if}}
+            {{#if state}}<td>{{state}}</td>{{/if}}
+            {{#if country}}<td>{{country}}</td>{{/if}}
+            {{#if email}}<td>{{email}}</td>{{/if}}
+            {{#if imgurl}}<td>{{imgurl}}</td>{{/if}}
+            {{#if is_employed}}<td>{{is_employed}}</td>{{/if}}
+            {{#if skill_name}}<td>{{skill_name}}</td>{{/if}}
+            {{#if level_of_expertise}}<td>{{level_of_expertise}}</td>{{/if}}
+            {{#if project_name}}<td>{{project_name}}</td>{{/if}}
+            {{#if project_description}}<td>{{project_description}}</td>{{/if}}
+            {{#if work_date}}<td>{{work_date}}</td>{{/if}}
+            {{#if url}}<td>{{url}}</td>{{/if}}
+            {{#if description}}<td>{{description}}</td>{{/if}}
+            {{#if linkedin}}<td>{{linkedin}}</td>{{/if}}
+            {{#if github}}<td>{{github}}</td>{{/if}}
+            {{#if cert_name}}<td>{{cert_name}}</td>{{/if}}
+            {{#if accomplishment_name}}<td>{{accomplishment_name}}</td>{{/if}}
+            {{#if accomplishment_description}}<td>{{accomplishment_description}}</td>{{/if}}
+            {{#if company}}<td>{{company}}</td>{{/if}}
+            {{#if title}}<td>{{title}}</td>{{/if}}
+            {{#if start_date}}<td>{{start_date}}</td>{{/if}}
+            {{#if end_date}}<td>{{end_date}}</td>{{/if}}
+            {{#if years_of_exp}}<td>{{years_of_exp}}</td>{{/if}}
+            {{#if designation}}<td>{{designation}}</td>{{/if}}
+            {{#if course}}<td>{{course}}</td>{{/if}}
+            {{#if study_year}}<td>{{study_year}}</td>{{/if}}
+            {{#if phone}}<td>{{phone}}</td>{{/if}}
+            {{#if gpa}}<td>{{gpa}}</td>{{/if}}
+            {{#if objective}}<td>{{objective}}</td>{{/if}}
+
         </tr>{{/each}}
     </table>
-    
+
+    <br>
+
+    <table style="margin-left: 180px; border:1px solid aquamarine">
+        <h2 style="margin-left: 560px; ">Applicants and their skills</h2>
+        {{#each skill_obj}}
+        <tr>
+            {{#if name}}<td>{{name}}</td>{{/if}}
+            {{#if skill_name}}<td>{{skill_name}}</td>{{/if}}
+            {{#if level_of_expertise}}<td>{{level_of_expertise}}</td>{{/if}}
+        </tr>{{/each}}
+
+    </table>
+
+    <table style="margin-left: 180px; border:1px solid aquamarine">
+        <h2 style="margin-left: 560px; ">Education details of applicants</h2>
+        {{#each edu_obj}}
+        <tr>
+            {{#if name}}<td>{{name}}</td>{{/if}}
+            {{#if location}}<td>{{location}}</td>{{/if}}
+            {{#if course}}<td>{{course}}</td>{{/if}}
+            {{#if gpa}}<td>{{gpa}}</td>{{/if}}
+            {{#if study_year}}<td>{{study_year}}</td>{{/if}}
+        </tr>
+        {{/each}}
+
+    </table>
+
+    <table style="margin-left: 180px; border:1px solid aquamarine">
+        <h2 style="margin-left: 560px; ">Job and experience details of applicants</h2>
+        {{#each job_obj}}
+        <tr>
+            {{#if name}}<td>{{name}}</td>{{/if}}
+            {{#if company}}<td>{{company}}</td>{{/if}}
+            {{#if title}}<td>{{title}}</td>{{/if}}
+            {{#if description}}<td>{{description}}</td>{{/if}}
+            {{#if years_of_exp}}<td>{{years_of_exp}} years</td>{{/if}}
+            {{#if location}}<td>{{location}}</td>{{/if}}
+        </tr>
+        {{/each}}
+
+    </table>
+
+
 </body>
+
 </html>
