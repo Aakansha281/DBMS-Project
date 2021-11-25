@@ -196,16 +196,3 @@ insert into author(url,member_id) values
 ('https://arxiv.org/abs/2110.02816',7),
 ('https://arxiv.org/abs/2110.02819',8),
 ('https://arxiv.org/abs/2110.02814',8);
-
-
-	
-	
-	
-
-
-
-
-
-
-
-

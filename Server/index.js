@@ -7,13 +7,13 @@ const path = require("path")
 
 app.use(cors())
 app.use(express.json())
-// const static_path = path.join(__dirname,"../public")
+const static_path = path.join(__dirname, "../public")
 //Routes
 
 app.use(express.urlencoded({ extended: false }));
 
 
-// app.use(express.static(static_path))
+app.use(express.static(static_path))
 app.set("view engine", "hbs");
 app.get("/home", (req, res) => {
     res.render("index")
@@ -276,7 +276,13 @@ app.get('/', (req, res) => {
 app.post('/f', async (req, res) => {
     const results = await pool.query(req.body.r)
     console.log(results.rows)
-    var wrapper = { objects: results.rows }
+
+    const skill_res = await pool.query(`select name, skill_name from person natural join skill natural join good_at;`)
+
+    const edu_res = await pool.query(`select name, location, course, gpa, study_year from person natural join studied_in natural join education;`)
+
+    const job_res = await pool.query(`select name, years_of_exp, company, title, description, location from (experience natural join job) natural join experienced_in natural join person;`)
+    var wrapper = { objects: results.rows, skill_obj: skill_res.rows, edu_obj: edu_res.rows, job_obj: job_res.rows }
     res.render("final", wrapper)
 })
 
@@ -414,7 +420,14 @@ app.post('/k', async (req, res) => {
         const searchResults = await pool.query(q)
         console.log(searchResults.rows)
         // res.json(searchResults.rows)
-        var wrapper = { objects: searchResults.rows }
+
+        const skill_res = await pool.query(`select name, skill_name from person natural join skill natural join good_at;`)
+
+        const edu_res = await pool.query(`select name, location, course, gpa, study_year from person natural join studied_in natural join education;`)
+
+        const job_res = await pool.query(`select name, years_of_exp, company, title, description, location from (experience natural join job) natural join experienced_in natural join person;`)
+
+        var wrapper = { objects: searchResults.rows, skill_obj: skill_res.rows, edu_obj: edu_res.rows, job_obj: job_res.rows }
         res.render("final", wrapper)
 
     }
@@ -423,6 +436,6 @@ app.post('/k', async (req, res) => {
     }
 })
 
-app.listen(5000, () => {
-    console.log('Server running on localhost 5000')
+app.listen(7000, () => {
+    console.log('Server running on localhost 7000')
 })
