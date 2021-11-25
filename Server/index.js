@@ -7,13 +7,13 @@ const path = require("path")
 
 app.use(cors())
 app.use(express.json())
-// const static_path = path.join(__dirname, "../public")
+const static_path = path.join(__dirname, "../public")
 //Routes
 
 app.use(express.urlencoded({ extended: false }));
 
 
-// app.use(express.static(static_path))
+app.use(express.static(static_path))
 app.set("view engine", "hbs");
 app.get("/home", (req, res) => {
     res.render("index")
